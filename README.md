@@ -58,3 +58,6 @@ if (!$API->Error()) {
 }
 ?>
 ```
+## Compatible clients
+* This API Client
+* APIRequest (Swift/iOS/XCode) https://github.com/mokny/APIRequest
