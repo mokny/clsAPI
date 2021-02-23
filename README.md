@@ -1,4 +1,4 @@
-# clsAPI
+# clsAPI - PHP Server and Client
 A basic API Server & Client class that handles requests via POST / JSON data exchange.
 
 ## Server
