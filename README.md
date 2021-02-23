@@ -1,4 +1,5 @@
 # clsAPI
+A basic API Server & Client class that handles requests via POST / JSON data exchange.
 
 ## Server
 This is an example of a basic API Server that will respond with a JSON Array.
