@@ -32,6 +32,39 @@ switch ($API->Method()) {
 
 ?>
 ```
+### API Key Verification
+API Keys can be stored in two ways. Either as file on the server or as a MySQL row. API Key verification should be done directly after instancing the class or (if applicable) after the User-Agent verification.
+
+#### Verification via File
+If you chose this option, a directory called ./apikeys will be automatically created. Make sure that your script has the appropriate writing permissions.
+```php
+$API->VerifyAPIKey("FILE");
+```
+#### Creating an API-Key via File
+In this request a new API Key will be created. It has a limit of 100 requests per hour. Set 100 to 0 if you want to grant unlimited requests.
+```php
+$apikey = $API->CreateAPIKey("FILE",100);
+```
+#### Verification via MySQL
+First initialize the MySQL Connection/Link. You can pass an existin connection to the class, or initiate a new connection by adding your credentials. If it dows not exist, a new table will be created called apikeys
+```php
+//Existing connection
+$mySqlConnection = mysqli_connect("server", "username", "password", "database");
+$API->MYSQLConnection($mySqlConnection);
+
+//New connection
+$API->MYSQLConnection(false, "database", "username", "password", "server");
+```
+Verification of the API-Key
+```php
+$API->VerifyAPIKey("MYSQL");
+```
+Creating an API-Key
+In this request a new API Key will be created. It has a limit of 100 requests per hour. Set 100 to 0 if you want to grant unlimited requests.
+```php
+$apikey = $API->CreateAPIKey("MYSQL",100);
+```
+
 
 ## Client
 This is the client that queries the server above. 
