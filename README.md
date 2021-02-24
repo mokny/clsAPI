@@ -72,8 +72,8 @@ This is the client that queries the server above.
 <?php
 require_once("clsAPI.php");
 
-//Create an APIClient Object and define the Server-URL and the User-Agent.
-$API = new APIClient("http://example.tld/server.php", "APIClient");
+//Create an APIClient Object and define the Server-URL and the User-Agent. The API Key is optional and must only be used if the server requires that authentication
+$API = new APIClient("http://example.tld/server.php", "APIClient", "MyTopSecretAPIKey");
 
 //Add a variables to your request
 $API->Push("name", "John Doe");
@@ -91,6 +91,21 @@ if (!$API->Error()) {
 }
 ?>
 ```
+### Debugging the server response
+This will print the entire server response to the screen
+```php
+echo $API->DebugOut();
+```
+
+### Getting information about API Throtteling
+Depending of the server configuration, API-Users can be throttled to a limited amount of requests per hour. If you need these information, you can get the values here:
+```php
+    echo $API->GetThrottleLimitPerHour() . "<br>";
+    echo $API->GetThrottleRequestsRemaining() . "<br>";
+    echo $API->GetThrottleNextReset() . "<br>";
+```
+This is only applicable if the server requires an API-Key.
+
 ## Compatible clients
 * This API Client
 * APIRequest (Swift/iOS/XCode) https://github.com/mokny/APIRequest
