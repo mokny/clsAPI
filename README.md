@@ -32,8 +32,10 @@ switch ($API->Method()) {
 
 ?>
 ```
+Note: $API->Respond will send all the data to the client and terminate the script. No further lines of code will be executed after that call.
+
 ### API Key Verification
-API Keys can be stored in two ways. Either as file on the server or as a MySQL row. API Key verification should be done directly after instancing the class or (if applicable) after the User-Agent verification.
+API Keys can be stored in two ways. Either as file on the server or as a MySQL row. API Key verification should be done directly after instancing the class or (if applicable) after the User-Agent verification. In case that the Key verification fails, the APIServer will automatically respond with an error and prevent any further execution of the script.
 
 #### Verification via File
 If you chose this option, a directory called ./apikeys will be automatically created. Make sure that your script has the appropriate writing permissions.
